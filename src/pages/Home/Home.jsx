@@ -4,7 +4,7 @@ import Request from '../../Request/Request';
 
 const Home = () => {
    return (
-      <div>
+      <div className='min-h-screen'>
          <MainComponent />
          <MovieCard scrollID='1' title='Curently Playing' fetchUrl={Request.requestNowPlaying} />
          <MovieCard scrollID='2' title='Popular Movies' fetchUrl={Request.requestPopular} />

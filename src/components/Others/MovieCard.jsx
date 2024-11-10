@@ -55,7 +55,7 @@ const MovieCard = ({ title, fetchUrl, tvShowUrl, scrollID }) => {
             <MdChevronLeft
                onClick={slideLeft}
                size={40}
-               className='bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block text-black'
+               className='bg-transparent left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block text-white'
             />
             <div
                className={`w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative slider${scrollID}`}>
@@ -70,7 +70,7 @@ const MovieCard = ({ title, fetchUrl, tvShowUrl, scrollID }) => {
             <MdChevronRight
                onClick={slideRight}
                size={40}
-               className='bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block text-black  '
+               className='bg-transparent right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block text-white  '
             />
          </div>
       </>
