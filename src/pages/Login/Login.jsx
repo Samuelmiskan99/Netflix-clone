@@ -25,7 +25,6 @@ const Login = () => {
          toast.error('Password tidak boleh kosong.');
          return;
       }
-
       try {
          await signIn(email, password);
          toast.success('Login Berhasil');
