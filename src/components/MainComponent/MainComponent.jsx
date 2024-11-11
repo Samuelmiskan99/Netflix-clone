@@ -29,28 +29,24 @@ const MainComponent = () => {
    };
 
    return (
-      <div className='w-full h-[600px] relative'>
+      <div className='w-full h-screen relative'>
+         {' '}
+         {/* Mengubah h-[600px] menjadi h-screen */}
          <div className='absolute w-full h-full bg-gradient-to-r from-black/80 via-transparent to-black/40' />
-         <div className='absolute w-full h-full bg-gradient-to-t from-black/95 to-transparent' />
+         <div className='absolute w-full h-full bg-gradient-to-t from-black/100 to-transparent' />
          {movie ? (
             <>
-               <img
-                  className='w-full h-full object-cover'
-                  src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-                  alt={movie?.title}
-               />
-               <div className='absolute top-[20%] w-full p-4 md:p-8 text-white'>
+               <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.title} />
+               <div className='absolute top-[33%] w-full p-4 md:p-8 text-white mt-4'>
                   <h1 className='text-3xl md:text-5xl font-bold py-5'>{movie?.title}</h1>
                   <p className='text-gray-400 text-sm'>Released: {movie?.release_date}</p>
-                  <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>
-                     {truncateString(movie?.overview, 200)}
-                  </p>
+                  <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>{truncateString(movie?.overview, 200)}</p>
                   <div className='my-10 flex items-center space-x-4'>
                      <button className='flex items-center border bg-gray-200 py-2 px-5 text-black font-semibold text-lg hover:bg-gray-300'>
                         <FaPlay className='mr-2' size={17} />
                         Play
                      </button>
-                     <button className='flex items-center border border-white py-2 px-5 text-white bg-gray-500/50 duration-200  font-semibold text-lg hover:bg-transparent transition-colors'>
+                     <button className='flex items-center border border-white py-2 px-5 text-white bg-gray-500/50 duration-200 font-semibold text-lg hover:bg-transparent transition-colors'>
                         <IoIosInformationCircleOutline className='mr-2' size={25} />
                         Watch Later
                      </button>
