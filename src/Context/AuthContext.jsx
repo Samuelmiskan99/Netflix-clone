@@ -10,6 +10,8 @@ import { auth } from '../firebase/FirebaseConfig.';
 
 const AuthContext = createContext();
 
+
+
 export function AuthContextProvider({ children }) {
    const [user, setUser] = useState(null);
 
