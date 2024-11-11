@@ -4,7 +4,8 @@ import BG_NETFLIX from '../../assets/pictures/netflix-bg.jpg';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
-import { validateEmail, getInitials } from '../../components/Others/Helper';
+import { validateEmail } from '../../components/Others/Helper';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
    const [showPassword, setShowPassword] = useState(false);
@@ -33,7 +34,11 @@ const Signup = () => {
       const symbolRegex = /[!@#$%^&*(),.?":{}|<>]/;
       const uppercaseRegex = /[A-Z]/;
 
-      if (!symbolRegex.test(password)) {
+      // Check if password includes a symbol and an uppercase letter
+      if (!password) {
+         setPasswordValidation('Password tidak boleh kosong.');
+         return false;
+      } else if (!symbolRegex.test(password)) {
          setPasswordValidation('Password harus menyertakan setidaknya satu simbol.');
          return false;
       } else if (!uppercaseRegex.test(password)) {
@@ -51,8 +56,10 @@ const Signup = () => {
          // Check both email and password validation
          try {
             await signUp(email, password);
-            navigate('/'); // Redirect after successful signup
+            toast.success('Akun berhasil dibuat!');
+            navigate('/');
          } catch (error) {
+            toast.error(error.message);
             console.log(error);
          }
       }
@@ -92,8 +99,7 @@ const Signup = () => {
                         type='button'
                         onClick={() => setShowPassword(!showPassword)}
                         className='absolute right-3 top-1/2 transform -translate-y-1/2 text-white'
-                        style={{ pointerEvents: 'auto' }} // Ensures the button is clickable
-                     >
+                        style={{ pointerEvents: 'auto' }}>
                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                      </button>
                   </div>
@@ -101,7 +107,6 @@ const Signup = () => {
                      <p className='text-red-500 text-sm mt-1'>{passwordValidation}</p>
                   )}
                </div>
-
                <button
                   type='submit'
                   className='w-full py-2 rounded bg-red-600 hover:bg-red-700 text-white font-semibold focus:outline-none focus:ring-2 focus:ring-red-500'>

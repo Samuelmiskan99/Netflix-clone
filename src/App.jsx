@@ -4,6 +4,10 @@ import Navbar from './components/Others/Navbar.jsx';
 import { AuthContextProvider } from './Context/AuthContext.jsx';
 import Login from './pages/Login/Login.jsx';
 import Signup from './pages/SignUp/Signup.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AccountMain from './pages/Account/AccountMain.jsx';
+import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes.jsx';
 
 function App() {
    return (
@@ -14,7 +18,16 @@ function App() {
                <Route path='/' element={<Home />} />
                <Route path='/login' element={<Login />} />
                <Route path='/signup' element={<Signup />} />
+               <Route
+                  path='/account'
+                  element={
+                     <ProtectedRoutes>
+                        <AccountMain />
+                     </ProtectedRoutes>
+                  }
+               />
             </Routes>
+            <ToastContainer />
          </AuthContextProvider>
       </>
    );
