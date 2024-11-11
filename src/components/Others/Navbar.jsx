@@ -24,7 +24,7 @@ const Navbar = () => {
          {user?.email ? (
             <div>
                <Link to='/login'>
-                  <button className='mr-4 '>Account</button>
+                  <button className='mr-4 hover:text-red-600 '>Account</button>
                </Link>
                <button onClick={handleLogout} className='rounded-lg bg-red-500 px-4 py-2'>
                   Logout

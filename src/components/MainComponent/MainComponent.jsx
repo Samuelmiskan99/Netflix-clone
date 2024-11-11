@@ -16,7 +16,6 @@ const MainComponent = () => {
          const { data } = await axios.get(Request.requestNowPlaying);
          setMovies(data.results);
       }
-
       fetchMovies();
    }, []);
 
@@ -32,7 +31,7 @@ const MainComponent = () => {
    return (
       <div className='w-full h-[600px] relative'>
          <div className='absolute w-full h-full bg-gradient-to-r from-black/80 via-transparent to-black/40' />
-         <div className='absolute w-full h-full bg-gradient-to-t from-black/90 to-transparent' />
+         <div className='absolute w-full h-full bg-gradient-to-t from-black/95 to-transparent' />
          {movie ? (
             <>
                <img
@@ -51,7 +50,7 @@ const MainComponent = () => {
                         <FaPlay className='mr-2' size={17} />
                         Play
                      </button>
-                     <button className='flex items-center border border-white py-2 px-5 text-white font-semibold text-lg hover:bg-white hover:text-black transition-colors'>
+                     <button className='flex items-center border border-white py-2 px-5 text-white bg-gray-500/50 duration-200  font-semibold text-lg hover:bg-transparent transition-colors'>
                         <IoIosInformationCircleOutline className='mr-2' size={25} />
                         Watch Later
                      </button>

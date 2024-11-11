@@ -1,5 +1,31 @@
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-const TvShows = ({ tv, id, isLiked }) => {
+import { UserAuth } from '../../Context/AuthContext';
+import { db } from '../../firebase/FirebaseConfig.';
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
+const TvShows = ({ tv, id }) => {
+   const [isLiked, setIsLiked] = useState(false);
+   const { user } = UserAuth();
+
+   const [savedMovies, setSavedMovies] = useState(false);
+
+   const movieID = doc(db, 'users', `${user?.email}`);
+   const saveTvShows = async () => {
+      if (user?.email) {
+         setIsLiked(true);
+         setSavedMovies(true);
+         await updateDoc(movieID, {
+            savedShows: arrayUnion({
+               id: tv.id,
+               title: tv.original_name,
+               img: tv.backdrop_path,
+            }),
+         });
+      } else {
+         toast.warning('Please log in to save a movie');
+      }
+   };
    return (
       <div
          key={id}
@@ -13,7 +39,7 @@ const TvShows = ({ tv, id, isLiked }) => {
             <p className='text-xs md:text-sm font-bold flex justify-center items-center h-full whitespace-normal'>
                {tv?.original_name}
             </p>
-            <p className='absolute top-4 left-4 text-gray-300'>
+            <p className='absolute top-4 left-4 text-gray-300' onClick={saveTvShows}>
                {isLiked ? <FaHeart /> : <FaRegHeart />}
             </p>
          </div>

@@ -6,7 +6,6 @@ import Movies from '../Api Map/Movies';
 import TvShows from '../Api Map/TvShows';
 
 const MovieCard = ({ title, fetchUrl, tvShowUrl, scrollID }) => {
-   const [isLiked, setIsLiked] = useState(false);
    const [allMovies, setAllMovies] = useState([]);
    const [tvShows, setTvShows] = useState([]);
 
@@ -60,11 +59,11 @@ const MovieCard = ({ title, fetchUrl, tvShowUrl, scrollID }) => {
             <div
                className={`w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative slider${scrollID}`}>
                {allMovies.map((item, index) => (
-                  <Movies key={index} item={item} isLiked={isLiked} />
+                  <Movies key={index} item={item} />
                ))}
                {/* Maping all movies from API's through tvShows Component */}
                {tvShows.map((tv, id) => (
-                  <TvShows key={id} tv={tv} isLiked={isLiked} />
+                  <TvShows key={id} tv={tv} />
                ))}
             </div>
             <MdChevronRight
