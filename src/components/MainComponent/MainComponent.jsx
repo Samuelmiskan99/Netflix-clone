@@ -37,7 +37,7 @@ const MainComponent = () => {
          {movie ? (
             <>
                <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.title} />
-               <div className='absolute top-[33%] w-full p-4 md:p-8 text-white mt-4'>
+               <div className='absolute top-[29%] w-full p-4 md:p-8 text-white mt-4'>
                   <h1 className='text-3xl md:text-5xl font-bold py-5'>{movie?.title}</h1>
                   <p className='text-gray-400 text-sm'>Released: {movie?.release_date}</p>
                   <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>{truncateString(movie?.overview, 200)}</p>
