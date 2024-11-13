@@ -7,6 +7,7 @@ import { db } from '../../firebase/FirebaseConfig.';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const SavedShows = () => {
+   //all the state that return every function on this savedShows component
    const [allMovies, setAllmovies] = useState([]);
    const { user } = UserAuth();
    const sliderRef = useRef(null); // gunakan useRef untuk slider
